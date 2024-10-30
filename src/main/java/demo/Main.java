@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * The program entry point
+     * Main method
      *
      * @param args Command line arguments
      */
@@ -18,7 +18,7 @@ public class Main {
         // Create hash table
         MyHashTable hashTable = new MyHashTable();
 
-        // Read data from file and populate hash table
+        // Scan houses from file
         try {
             File file = new File("houses.txt");
             Scanner scanner = new Scanner(file);
@@ -28,11 +28,10 @@ public class Main {
                 int value = Integer.parseInt(scanner.nextLine().trim());
                 hashTable.add(new House(owner, value));
             }
-            scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Error");
+            System.out.println("Error file");
         } catch (NumberFormatException e) {
-            System.out.println("Invalid");
+            System.out.println("Error value");
         }
 
             // Print original hash table
@@ -43,7 +42,7 @@ public class Main {
             System.out.println("\nCopy Table:");
             MyHashTable copiedTable = new MyHashTable(hashTable);
             System.out.println("Copied Hash Table:");
-            // Commented out to avoid printing the entire table
+            // Commented out to avoid printing the entire table and making a mess
             // Uncomment below to see the copied table
             // copiedTable.show();
 
@@ -51,7 +50,7 @@ public class Main {
             System.out.println("\nDeep Copy Table:");
             MyHashTable deepCopiedTable = hashTable.deepCopy();
             System.out.println("Deep Copied Hash Table:");
-            // Commented out to avoid printing the entire table
+            // Commented out to avoid printing the entire table and making a mess
             // Uncomment below to see the deep copied table
             // deepCopiedTable.show();
 

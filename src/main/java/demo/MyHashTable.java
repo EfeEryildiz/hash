@@ -10,7 +10,8 @@ public class MyHashTable {
     private int bucketSize = 4;
 
     /**
-     * Default constructor. Initializes hash table with 4 buckets.
+     * Default constructor
+     * Initialize hash table with 4 buckets
      */
     public MyHashTable() {
         buckets = new MyList[bucketSize];
@@ -21,8 +22,8 @@ public class MyHashTable {
     }
 
     /**
-     * Copy constructor that creates a deep copy of another MyHashTable.
-     * @param other The MyHashTable to copy.
+     * Copy constructor that creates a deep copy of another MyHashTable
+     * @param other The MyHashTable to copy
      */
     public MyHashTable(MyHashTable other) {
         this.buckets = new MyList[other.buckets.length];
@@ -39,16 +40,17 @@ public class MyHashTable {
      * @return A new MyHashTable that is a deep copy of this table
      */
     public MyHashTable deepCopy() {
+
         return new MyHashTable(this);
     }
 
     /**
      * Adds a house to the hash table
-     * Resizes if load factor exceeds 0.75
+     * Resizes if load factor goes over 0.75
      * @param house The house to add
      */
     public void add(House house) {
-        // Check if resize is needed
+        // Forcing resize if needed
         if ((double) (size + 1) / buckets.length > loadFactor) {
             resize();
         }
@@ -57,7 +59,7 @@ public class MyHashTable {
         int hashValue = house.hashCode();
         int bucketIndex = Math.abs(hashValue % buckets.length);
 
-        // Add house to appropriate bucket
+        // Add house to the right bucket
         buckets[bucketIndex].add(house);
         size++;
     }
@@ -68,12 +70,12 @@ public class MyHashTable {
      * @return The House if found otherwise null
      */
     public House find(String owner) {
-        // Create temporary house to get hash code
+        // Create temp house to get hash code
         House temp = new House(owner, 0);
         int hashValue = temp.hashCode();
         int bucketIndex = Math.abs(hashValue % buckets.length);
 
-        // Search in the appropriate bucket
+        // Search in the right bucket
         return buckets[bucketIndex].find(owner);
     }
 
@@ -105,10 +107,10 @@ public class MyHashTable {
      * Resizes the hash table
      */
     private void resize() {
-        // Store old buckets
+        // Store old buckets in a temp array
         MyList[] oldBuckets = buckets;
 
-        // Create new array with double capacity
+        // Create new array double the size
         buckets = new MyList[oldBuckets.length * 2];
         for (int i = 0; i < buckets.length; i++) {
             buckets[i] = new MyList();
@@ -133,6 +135,7 @@ public class MyHashTable {
      * @return The size of the hash table
      */
     public int getSize() {
+
         return size;
     }
 }

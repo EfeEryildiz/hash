@@ -115,18 +115,20 @@ public class MyList {
     }
 
     /**
-     * Gets the current size of the list.
-     * @return The number of elements in the list.
+     * Gets the current size of the list
+     * @return The number of elements in the list
      */
     public int getSize() {
+
         return size;
     }
 
     /**
-     * Checks if the list is empty.
-     * @return True if the list is empty, false otherwise.
+     * Checks if the list is empty
+     * @return True if the list is empty or false if not empty
      */
     public boolean isEmpty() {
+
         return head == null;
     }
 }
